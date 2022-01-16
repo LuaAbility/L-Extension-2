@@ -1,7 +1,7 @@
 local material = import("$.Material")
 
 function Init(abilityData)
-	plugin.registerEvent(abilityData, "EX025-lock", "PlayerInteractEvent", 2400)
+	plugin.registerEvent(abilityData, "EX025-lock", "PlayerInteractEvent", 2000)
 end
 
 function onEvent(funcTable)
@@ -14,8 +14,10 @@ function seeCheck(LAPlayer, event, ability, id)
 			if game.isAbilityItem(event:getItem(), "IRON_INGOT") then
 				local players = util.getTableFromList(game.getPlayers())
 				for i = 1, #players do
-					if not players[i]:getPlayer():isDead() and getLookingAt(event:getPlayer(), players[i]:getPlayer(), 0.7) then
+					if not players[i]:getPlayer():isDead() and getLookingAt(event:getPlayer(), players[i]:getPlayer(), 0.85) then
 						if game.checkCooldown(LAPlayer, game.getPlayer(event:getPlayer()), ability, id) then 
+							players[i]:getPlayer():getWorld():spawnParticle(import("$.Particle").SMOKE_NORMAL, players[i]:getPlayer():getLocation():add(0,1,0), 200, 0.5, 1, 0.5, 0.1)
+							players[i]:getPlayer():getWorld():playSound(players[i]:getPlayer():getLocation(), import("$.Sound").ITEM_CHORUS_FRUIT_TELEPORT, 0.5, 1.2)
 							summonJail(players[i]:getPlayer()) 
 						end
 						return 0
@@ -29,7 +31,9 @@ end
 function summonJail(target)
 	local blockList = {}
 	local prevBlockType = {}
+	local gamemode = target:getGameMode()
 	
+	target:setGameMode(import("$.GameMode").ADVENTURE)
 	local botBlock1 = target:getWorld():getBlockAt(target:getLocation():add(-1,-1,-1))
 	table.insert(prevBlockType, botBlock1:getType())
 	botBlock1:setType(material.OBSIDIAN)
@@ -483,6 +487,7 @@ function summonJail(target)
 			blockList[i]:getWorld():playSound(blockList[i]:getLocation(), import("$.Sound").BLOCK_STONE_BREAK, 0.25, 1)
 			blockList[i]:setType(prevBlockType[i])
 		end
+		if game.getPlayer(target).isSurvive then target:setGameMode(gamemode) end
 	end, 100)
 end
 

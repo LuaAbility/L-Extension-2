@@ -1,5 +1,5 @@
 function Init(abilityData)
-	plugin.registerEvent(abilityData, "EX027-toVoid", "EntityDamageEvent", 3000)
+	plugin.registerEvent(abilityData, "EX027-toVoid", "EntityDamageEvent", 2000)
 end
 
 function onEvent(funcTable)
