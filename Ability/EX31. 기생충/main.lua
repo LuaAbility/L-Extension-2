@@ -38,22 +38,26 @@ end
 
 function takeHealth(player)
 	local targetPlayer = player:getVariable("EX031-player")
-	targetPlayer:getPlayer():damage(1)
-	
-	local finalHealth = player:getPlayer():getHealth() + 1
-	if player:getPlayer():getAttribute(attribute.GENERIC_MAX_HEALTH):getValue() < finalHealth then 
-		finalHealth = player:getPlayer():getAttribute(attribute.GENERIC_MAX_HEALTH):getValue()
+	if targetPlayer ~= nil then
+		targetPlayer:getPlayer():damage(1)
+		
+		local finalHealth = player:getPlayer():getHealth() + 1
+		if player:getPlayer():getAttribute(attribute.GENERIC_MAX_HEALTH):getValue() < finalHealth then 
+			finalHealth = player:getPlayer():getAttribute(attribute.GENERIC_MAX_HEALTH):getValue()
+		end
+		player:getPlayer():setHealth(finalHealth)
 	end
-	player:getPlayer():setHealth(finalHealth)
 end
 
 function teleport(player)
 	local targetPlayer = player:getVariable("EX031-player")
-	if targetPlayer:getPlayer():isDead() then 
-		stopHiding(player)
-	else
-		player:getPlayer():setGameMode(import("$.GameMode").SPECTATOR)
-		player:getPlayer():setSpectatorTarget(targetPlayer:getPlayer())
+	if targetPlayer ~= nil then
+		if targetPlayer:getPlayer():isDead() then 
+			stopHiding(player)
+		else
+			player:getPlayer():setGameMode(import("$.GameMode").SPECTATOR)
+			player:getPlayer():setSpectatorTarget(targetPlayer:getPlayer())
+		end
 	end
 end
 
