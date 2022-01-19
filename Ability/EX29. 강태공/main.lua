@@ -9,7 +9,7 @@ end
 function fishing(LAPlayer, event, ability, id)
 	local state = import("$.event.player.PlayerFishEvent$State")
 
-	if event:getState() == state.CAUGHT_ENTITY or event:getState() == state.CAUGHT_FISH then
+	if event:getState() == state.CAUGHT_FISH then
 		if game.checkCooldown(LAPlayer, game.getPlayer(event:getPlayer()), ability, id) then
 			local players = util.getTableFromList(game.getPlayers())
 			local targetPlayer = players[util.random(1, #players)]
