@@ -1,5 +1,5 @@
 function Init(abilityData)
-	plugin.registerEvent(abilityData, "EX027-toVoid", "EntityDamageEvent", 2000)
+	plugin.registerEvent(abilityData, "EX027-toVoid", "EntityDamageEvent", 1200)
 end
 
 function onEvent(funcTable)
@@ -15,6 +15,7 @@ function toVoid(LAPlayer, event, ability, id)
 				local afterLoc = beforeLoc:clone()
 				afterLoc:setY(-256)
 				
+				game.sendMessage(event:getEntity(), "§7공허로 이동합니다.")
 				event:getEntity():getWorld():spawnParticle(import("$.Particle").SMOKE_NORMAL, event:getEntity():getLocation():add(0,1,0), 200, 0.5, 1, 0.5, 0.1)
 				event:getEntity():getWorld():playSound(event:getEntity():getLocation(), import("$.Sound").ITEM_CHORUS_FRUIT_TELEPORT, 0.5, 1.2)
 				event:getEntity():teleport(afterLoc)
@@ -25,7 +26,7 @@ function toVoid(LAPlayer, event, ability, id)
 					event:getEntity():teleport(beforeLoc)
 					event:getEntity():getWorld():spawnParticle(import("$.Particle").SMOKE_NORMAL, event:getEntity():getLocation():add(0,1,0), 200, 0.5, 1, 0.5, 0.1)
 					event:getEntity():getWorld():playSound(event:getEntity():getLocation(), import("$.Sound").ITEM_CHORUS_FRUIT_TELEPORT, 0.5, 1.2)
-				end, 20)
+				end, 30)
 			end
 		end
 	end

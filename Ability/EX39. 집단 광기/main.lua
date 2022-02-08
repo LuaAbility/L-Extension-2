@@ -1,5 +1,5 @@
 function Init(abilityData)
-	plugin.registerEvent(abilityData, "EX039-useAbility", "PlayerInteractEvent", 2000)
+	plugin.registerEvent(abilityData, "EX039-useAbility", "PlayerInteractEvent", 1200)
 end
 
 function onEvent(funcTable)
@@ -22,7 +22,7 @@ function useAbility(LAPlayer, event, ability, id)
 		if event:getItem() ~= nil then
 			if game.isAbilityItem(event:getItem(), "IRON_INGOT") then
 				if game.checkCooldown(LAPlayer, game.getPlayer(event:getPlayer()), ability, id) then
-					LAPlayer:setVariable("EX039-abilityTime", 300)
+					LAPlayer:setVariable("EX039-abilityTime", 100)
 				end
 			end
 		end

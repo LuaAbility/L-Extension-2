@@ -1,5 +1,5 @@
 function Init(abilityData)
-	plugin.registerEvent(abilityData, "EX029-fishing", "PlayerFishEvent", 800)
+	plugin.registerEvent(abilityData, "EX029-fishing", "PlayerFishEvent", 0)
 end
 
 function onEvent(funcTable)

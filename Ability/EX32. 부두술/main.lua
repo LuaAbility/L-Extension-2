@@ -1,7 +1,7 @@
 local entityType = import("$.entity.EntityType")
 
 function Init(abilityData)
-	plugin.registerEvent(abilityData, "EX032-summonMob", "PlayerInteractEvent", 200)
+	plugin.registerEvent(abilityData, "EX032-summonMob", "PlayerInteractEvent", 100)
 end
 
 function onEvent(funcTable)
