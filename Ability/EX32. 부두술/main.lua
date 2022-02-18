@@ -1,11 +1,11 @@
 local entityType = import("$.entity.EntityType")
 
 function Init(abilityData)
-	plugin.registerEvent(abilityData, "EX032-summonMob", "PlayerInteractEvent", 100)
+	plugin.registerEvent(abilityData, "골렘 소환", "PlayerInteractEvent", 100)
 end
 
 function onEvent(funcTable)
-	if funcTable[1] == "EX032-summonMob" then summonMob(funcTable[3], funcTable[2], funcTable[4], funcTable[1]) end
+	if funcTable[1] == "골렘 소환" then summonMob(funcTable[3], funcTable[2], funcTable[4], funcTable[1]) end
 end
 
 function summonMob(LAPlayer, event, ability, id)

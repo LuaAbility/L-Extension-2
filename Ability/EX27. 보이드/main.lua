@@ -1,9 +1,9 @@
 function Init(abilityData)
-	plugin.registerEvent(abilityData, "EX027-toVoid", "EntityDamageEvent", 1200)
+	plugin.registerEvent(abilityData, "공허로", "EntityDamageEvent", 800)
 end
 
 function onEvent(funcTable)
-	if funcTable[1] == "EX027-toVoid" and funcTable[2]:getEventName() == "EntityDamageByEntityEvent" then toVoid(funcTable[3], funcTable[2], funcTable[4], funcTable[1]) end
+	if funcTable[1] == "공허로" and funcTable[2]:getEventName() == "EntityDamageByEntityEvent" then toVoid(funcTable[3], funcTable[2], funcTable[4], funcTable[1]) end
 end
 
 function toVoid(LAPlayer, event, ability, id)

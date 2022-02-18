@@ -1,9 +1,9 @@
 function Init(abilityData)
-	plugin.registerEvent(abilityData, "EX022-enigma", "EntityDamageEvent", 400)
+	plugin.registerEvent(abilityData, "암호화", "EntityDamageEvent", 400)
 end
 
 function onEvent(funcTable)
-	if funcTable[1] == "EX022-enigma" and funcTable[2]:getEventName() == "EntityDamageByEntityEvent" then enigma(funcTable[3], funcTable[2], funcTable[4], funcTable[1]) end
+	if funcTable[1] == "암호화" and funcTable[2]:getEventName() == "EntityDamageByEntityEvent" then enigma(funcTable[3], funcTable[2], funcTable[4], funcTable[1]) end
 end
 
 function enigma(LAPlayer, event, ability, id)

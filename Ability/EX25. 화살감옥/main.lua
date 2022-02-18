@@ -1,11 +1,11 @@
 local material = import("$.Material")
 
 function Init(abilityData)
-	plugin.registerEvent(abilityData, "EX025-lock", "PlayerInteractEvent", 2000)
+	plugin.registerEvent(abilityData, "감옥 생성", "PlayerInteractEvent", 2000)
 end
 
 function onEvent(funcTable)
-	if funcTable[1] == "EX025-lock" then seeCheck(funcTable[3], funcTable[2], funcTable[4], funcTable[1]) end
+	if funcTable[1] == "감옥 생성" then seeCheck(funcTable[3], funcTable[2], funcTable[4], funcTable[1]) end
 end
 
 function seeCheck(LAPlayer, event, ability, id)

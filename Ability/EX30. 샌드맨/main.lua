@@ -1,12 +1,12 @@
 local material = import("$.Material")
 
 function Init(abilityData)
-	plugin.registerEvent(abilityData, "EX030-sand", "PlayerInteractEvent", 240)
+	plugin.registerEvent(abilityData, "모래 생성", "PlayerInteractEvent", 240)
 	plugin.registerEvent(abilityData, "EX030-removeDamage", "EntityDamageEvent", 0)
 end
 
 function onEvent(funcTable)
-	if funcTable[1] == "EX030-sand" then sand(funcTable[3], funcTable[2], funcTable[4], funcTable[1]) end
+	if funcTable[1] == "모래 생성" then sand(funcTable[3], funcTable[2], funcTable[4], funcTable[1]) end
 	if funcTable[1] == "EX030-removeDamage" then removeDamage(funcTable[3], funcTable[2], funcTable[4], funcTable[1]) end
 end
 

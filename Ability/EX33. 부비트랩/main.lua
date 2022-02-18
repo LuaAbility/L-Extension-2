@@ -1,10 +1,10 @@
 function Init(abilityData)
-	plugin.registerEvent(abilityData, "EX033-addTrap", "PlayerInteractEvent", 300)
+	plugin.registerEvent(abilityData, "함정 설치", "PlayerInteractEvent", 300)
 	plugin.registerEvent(abilityData, "EX033-activateTrap", "PlayerMoveEvent", 0)
 end
 
 function onEvent(funcTable)
-	if funcTable[1] == "EX033-addTrap" then addTrap(funcTable[3], funcTable[2], funcTable[4], funcTable[1]) end
+	if funcTable[1] == "함정 설치" then addTrap(funcTable[3], funcTable[2], funcTable[4], funcTable[1]) end
 	if funcTable[1] == "EX033-activateTrap" then activateTrap(funcTable[3], funcTable[2], funcTable[4], funcTable[1]) end
 end
 

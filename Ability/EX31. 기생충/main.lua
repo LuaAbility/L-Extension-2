@@ -2,11 +2,11 @@ local attribute = import("$.attribute.Attribute")
 local effect = import("$.potion.PotionEffectType")
 
 function Init(abilityData)
-	plugin.registerEvent(abilityData, "EX031-useAbility", "EntityDamageEvent", 660)
+	plugin.registerEvent(abilityData, "기생", "EntityDamageEvent", 660)
 end
 
 function onEvent(funcTable)
-	if funcTable[1] == "EX031-useAbility" and funcTable[2]:getEventName() == "EntityDamageByEntityEvent" then useAbility(funcTable[3], funcTable[2], funcTable[4], funcTable[1]) end
+	if funcTable[1] == "기생" and funcTable[2]:getEventName() == "EntityDamageByEntityEvent" then useAbility(funcTable[3], funcTable[2], funcTable[4], funcTable[1]) end
 end
 
 function onTimer(player, ability)
@@ -62,7 +62,7 @@ function teleport(player)
 end
 
 function stopHiding(player)
-	game.sendMessage(player:getPlayer(), "§1[§b기생충§1] §b능력 시전 시간이 종료되었습니다.")	
+	game.sendMessage(player:getPlayer(), "§1[§b기생충§1] §b능력 시전 시간이 종료되었습니다. (기생)")	
 	player:setVariable("EX031-isInvisible", 0)
 	player:removeVariable("EX031-player")
 	player:getPlayer():setGameMode(player:getVariable("EX031-gamemode"))

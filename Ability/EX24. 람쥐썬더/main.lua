@@ -1,9 +1,9 @@
 function Init(abilityData)
-	plugin.registerEvent(abilityData, "EX024-lightning", "PlayerInteractEvent", 1800)
+	plugin.registerEvent(abilityData, "번개 생성", "PlayerInteractEvent", 1800)
 end
 
 function onEvent(funcTable)
-	if funcTable[1] == "EX024-lightning" then shootLightning(funcTable[3], funcTable[2], funcTable[4], funcTable[1]) end
+	if funcTable[1] == "번개 생성" then shootLightning(funcTable[3], funcTable[2], funcTable[4], funcTable[1]) end
 end
 
 function shootLightning(LAPlayer, event, ability, id)

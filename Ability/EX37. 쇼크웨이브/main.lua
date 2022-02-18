@@ -1,9 +1,9 @@
 function Init(abilityData)
-	plugin.registerEvent(abilityData, "EX037-shockwave", "PlayerInteractEvent", 1800)
+	plugin.registerEvent(abilityData, "충격파 발사", "PlayerInteractEvent", 1800)
 end
 
 function onEvent(funcTable)
-	if funcTable[1] == "EX037-shockwave" then shootShockwave(funcTable[3], funcTable[2], funcTable[4], funcTable[1]) end
+	if funcTable[1] == "충격파 발사" then shootShockwave(funcTable[3], funcTable[2], funcTable[4], funcTable[1]) end
 end
 
 function shootShockwave(LAPlayer, event, ability, id)

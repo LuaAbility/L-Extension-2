@@ -1,9 +1,9 @@
 function Init(abilityData)
-	plugin.registerEvent(abilityData, "EX039-useAbility", "PlayerInteractEvent", 1200)
+	plugin.registerEvent(abilityData, "집단 광기", "PlayerInteractEvent", 1200)
 end
 
 function onEvent(funcTable)
-	if funcTable[1] == "EX039-useAbility" then useAbility(funcTable[3], funcTable[2], funcTable[4], funcTable[1]) end
+	if funcTable[1] == "집단 광기" then useAbility(funcTable[3], funcTable[2], funcTable[4], funcTable[1]) end
 end
 
 function onTimer(player, ability)
@@ -12,7 +12,7 @@ function onTimer(player, ability)
 	if count > 0 then 
 		if count % 10 == 0 then randomDir() end
 		count = count - 2 
-		if count <= 0 then game.sendMessage(player:getPlayer(), "§2[§a집단 광기§2] §a능력 시전 시간이 종료되었습니다.") end
+		if count <= 0 then game.sendMessage(player:getPlayer(), "§2[§a집단 광기§2] §a능력 시전 시간이 종료되었습니다. (집단 광기)") end
 	end
 	player:setVariable("EX039-abilityTime", count)
 end

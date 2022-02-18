@@ -1,11 +1,11 @@
 local worldInfo = import("$.World$Environment")
 
 function Init(abilityData)
-	plugin.registerEvent(abilityData, "EX040-useAbility", "PlayerInteractEvent", 60)
+	plugin.registerEvent(abilityData, "정보 확인", "PlayerInteractEvent", 60)
 end
 
 function onEvent(funcTable)
-	if funcTable[1] == "EX040-useAbility" then useAbility(funcTable[3], funcTable[2], funcTable[4], funcTable[1]) end
+	if funcTable[1] == "정보 확인" then useAbility(funcTable[3], funcTable[2], funcTable[4], funcTable[1]) end
 end
 
 function useAbility(LAPlayer, event, ability, id)

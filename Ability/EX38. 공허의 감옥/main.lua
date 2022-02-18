@@ -1,12 +1,12 @@
 function Init(abilityData)
-	plugin.registerEvent(abilityData, "EX038-useAbility", "PlayerInteractEvent", 2000)
+	plugin.registerEvent(abilityData, "감옥 생성", "PlayerInteractEvent", 2000)
 	plugin.registerEvent(abilityData, "EX038-cancelDamage", "EntityDamageEvent", 0)
 	plugin.registerEvent(abilityData, "EX038-cancelAttack", "EntityDamageEvent", 0)
 	plugin.registerEvent(abilityData, "EX038-stopMove", "PlayerMoveEvent", 0)
 end
 
 function onEvent(funcTable)
-	if funcTable[1] == "EX038-useAbility" then useAbility(funcTable[3], funcTable[2], funcTable[4], funcTable[1]) end
+	if funcTable[1] == "감옥 생성" then useAbility(funcTable[3], funcTable[2], funcTable[4], funcTable[1]) end
 	if funcTable[1] == "EX038-cancelDamage" and funcTable[2]:getEventName() == "EntityDamageEvent" then cancelDamage(funcTable[3], funcTable[2], funcTable[4], funcTable[1]) end
 	if funcTable[1] == "EX038-cancelAttack" and funcTable[2]:getEventName() == "EntityDamageByEntityEvent" then cancelAttack(funcTable[3], funcTable[2], funcTable[4], funcTable[1]) end
 	if funcTable[1] == "EX038-stopMove" then stopMove(funcTable[3], funcTable[2], funcTable[4], funcTable[1]) end
@@ -50,7 +50,7 @@ function endOfAbility(player)
 		end
 	end
 	
-	game.sendMessage(player:getPlayer(), "§2[§a공허의 감옥§2] §a능력 시전 시간이 종료되었습니다.") 
+	game.sendMessage(player:getPlayer(), "§2[§a공허의 감옥§2] §a능력 시전 시간이 종료되었습니다. (감옥 생성)") 
 end
 
 function cancelData(player)

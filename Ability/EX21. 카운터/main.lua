@@ -1,12 +1,12 @@
 local types = import("$.entity.EntityType")
 
 function Init(abilityData)
-	plugin.registerEvent(abilityData, "EX021-startCounter", "PlayerInteractEvent", 300)
+	plugin.registerEvent(abilityData, "카운터 모드", "PlayerInteractEvent", 300)
 	plugin.registerEvent(abilityData, "EX021-checkCounterMode", "EntityDamageEvent", 0)
 end
 
 function onEvent(funcTable)
-	if funcTable[1] == "EX021-startCounter" then startCounter(funcTable[3], funcTable[2], funcTable[4], funcTable[1]) end
+	if funcTable[1] == "카운터 모드" then startCounter(funcTable[3], funcTable[2], funcTable[4], funcTable[1]) end
 	if funcTable[1] == "EX021-checkCounterMode" and funcTable[2]:getEventName() == "EntityDamageByEntityEvent" then checkCounterMode(funcTable[3], funcTable[2], funcTable[4], funcTable[1]) end
 end
 
