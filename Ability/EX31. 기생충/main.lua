@@ -28,9 +28,13 @@ function useAbility(LAPlayer, event, ability, id)
 		local item = { event:getDamager():getInventory():getItemInMainHand() }
 		if game.isAbilityItem(item[1], "IRON_INGOT") then
 			if game.checkCooldown(LAPlayer, game.getPlayer(event:getDamager()), ability, id) then
-				LAPlayer:setVariable("EX031-isInvisible", 200)
-				LAPlayer:setVariable("EX031-player", game.getPlayer(event:getEntity()))
-				LAPlayer:setVariable("EX031-gamemode", event:getDamager():getGameMode())
+				if game.targetPlayer(LAPlayer, game.getPlayer(event:getEntity())) then
+					LAPlayer:setVariable("EX031-isInvisible", 200)
+					LAPlayer:setVariable("EX031-player", game.getPlayer(event:getEntity()))
+					LAPlayer:setVariable("EX031-gamemode", event:getDamager():getGameMode())
+				else
+					ability:resetCooldown(id)
+				end
 			end
 		end
 	end

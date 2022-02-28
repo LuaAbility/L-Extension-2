@@ -11,15 +11,19 @@ function enigma(LAPlayer, event, ability, id)
 		local item = event:getDamager():getInventory():getItemInMainHand()
 		if game.isAbilityItem(item, "IRON_INGOT") then
 			if game.checkCooldown(LAPlayer, game.getPlayer(event:getDamager()), ability, id) then
-				local targetInv = event:getEntity():getInventory()
-				game.sendMessage(event:getEntity(), "§c에니그마 능력에 의해 인벤토리가 뒤섞입니다!")	
-				for i = 1, 100 do
-					local randomIndex = util.random(0, 35)
-					local item = targetInv:getItem(0)
-					if item == nil then newInstance("$.inventory.ItemStack", {import("$.Material").AIR, 1}) 
-					else item = targetInv:getItem(0):clone() end
-					targetInv:setItem(0, targetInv:getItem(randomIndex))
-					targetInv:setItem(randomIndex, item)
+				if game.targetPlayer(LAPlayer, game.getPlayer(event:getEntity())) then
+					local targetInv = event:getEntity():getInventory()
+					game.sendMessage(event:getEntity(), "§c에니그마 능력에 의해 인벤토리가 뒤섞입니다!")	
+					for i = 1, 100 do
+						local randomIndex = util.random(0, 35)
+						local item = targetInv:getItem(0)
+						if item == nil then newInstance("$.inventory.ItemStack", {import("$.Material").AIR, 1}) 
+						else item = targetInv:getItem(0):clone() end
+						targetInv:setItem(0, targetInv:getItem(randomIndex))
+						targetInv:setItem(randomIndex, item)
+					end
+				else
+					ability:resetCooldown(id)
 				end
 			end
 		end

@@ -28,9 +28,13 @@ function sand(LAPlayer, event, ability, id)
 			elseif event:getAction():toString() == "LEFT_CLICK_AIR" or event:getAction():toString() == "LEFT_CLICK_BLOCK" then
 				local players = util.getTableFromList(game.getPlayers())
 				for i = 1, #players do
-					if not players[i]:getPlayer():isDead() and getLookingAt(event:getPlayer(), players[i]:getPlayer(), 0.85) then
+					if getLookingAt(event:getPlayer(), players[i]:getPlayer(), 0.98) then
 						if game.checkCooldown(LAPlayer, game.getPlayer(event:getPlayer()), ability, id) then 
-							summonSand(players[i]:getPlayer():getLocation()) 
+							if game.targetPlayer(LAPlayer, players[i]) then
+								summonSand(players[i]:getPlayer():getLocation()) 
+							else 
+								ability:resetCooldown(id)
+							end
 						end
 						return 0
 					end
@@ -194,7 +198,6 @@ function summonSand(target)
 	
 	local floor3Block9 = target:getWorld():getBlockAt(target:clone():add(1,4,1))
 	floor3Block9:setType(material.SAND)
-	
 	
 	local floor4Block = target:getWorld():getBlockAt(target:clone():add(0,5,0))
 	floor4Block:setType(material.SAND)

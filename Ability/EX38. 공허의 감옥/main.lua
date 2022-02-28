@@ -57,7 +57,7 @@ function cancelData(player)
 	local players = util.getTableFromList(game.getPlayers())
 	for i = 1, #players do
 		if player:getPlayer():getWorld():getEnvironment() == players[i]:getPlayer():getWorld():getEnvironment() and
-		players[i]:getPlayer():getLocation():distance(player:getPlayer():getLocation()) <= 7.5 then 
+		players[i]:getPlayer():getLocation():distance(player:getPlayer():getLocation()) <= 7.5 and game.targetPlayer(player, players[i], false) then 
 			if player:getPlayer() ~= players[i]:getPlayer() then
 				if players[i]:getVariable("EX038-abilityLock") == nil then 
 					if players[i]:getVariable("abilityLock") == nil then players[i]:setVariable("EX038-abilityLock", false) 

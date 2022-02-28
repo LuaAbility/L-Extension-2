@@ -14,11 +14,15 @@ function seeCheck(LAPlayer, event, ability, id)
 			if game.isAbilityItem(event:getItem(), "IRON_INGOT") then
 				local players = util.getTableFromList(game.getPlayers())
 				for i = 1, #players do
-					if not players[i]:getPlayer():isDead() and getLookingAt(event:getPlayer(), players[i]:getPlayer(), 0.99) then
+					if getLookingAt(event:getPlayer(), players[i]:getPlayer(), 0.98) then
 						if game.checkCooldown(LAPlayer, game.getPlayer(event:getPlayer()), ability, id) then 
-							players[i]:getPlayer():getWorld():spawnParticle(import("$.Particle").SMOKE_NORMAL, players[i]:getPlayer():getLocation():add(0,1,0), 200, 0.5, 1, 0.5, 0.1)
-							players[i]:getPlayer():getWorld():playSound(players[i]:getPlayer():getLocation(), import("$.Sound").ITEM_CHORUS_FRUIT_TELEPORT, 0.5, 1.2)
-							summonJail(players[i]:getPlayer()) 
+							if game.targetPlayer(LAPlayer, players[i]) then
+								players[i]:getPlayer():getWorld():spawnParticle(import("$.Particle").SMOKE_NORMAL, players[i]:getPlayer():getLocation():add(0,1,0), 200, 0.5, 1, 0.5, 0.1)
+								players[i]:getPlayer():getWorld():playSound(players[i]:getPlayer():getLocation(), import("$.Sound").ITEM_CHORUS_FRUIT_TELEPORT, 0.5, 1.2)
+								summonJail(players[i]:getPlayer())
+							else
+								ability:resetCooldown(id)
+							end							
 						end
 						return 0
 					end
@@ -310,7 +314,7 @@ function summonJail(target)
 	dispenser3:update()
 	dispenser3:getInventory():setItem(0, item:clone())
 	
-	for i = 1, 10 do
+	for i = 1, 6 do
 		util.runLater(function() 
 			local redstone1 = floor2Block10:getWorld():getBlockAt(floor2Block10:getLocation():add(0, 0, 1))
 			local redstone2 = floor2Block15:getWorld():getBlockAt(floor2Block15:getLocation():add(0, 0, 1))
@@ -488,7 +492,7 @@ function summonJail(target)
 			blockList[i]:setType(prevBlockType[i])
 		end
 		if game.getPlayer(target).isSurvive then target:setGameMode(gamemode) end
-	end, 100)
+	end, 60)
 end
 
 function getLookingAt(player, player1, checkDouble)
