@@ -27,7 +27,7 @@ function toVoid(LAPlayer, event, ability, id)
 						event:getEntity():teleport(beforeLoc)
 						event:getEntity():getWorld():spawnParticle(import("$.Particle").SMOKE_NORMAL, event:getEntity():getLocation():add(0,1,0), 200, 0.5, 1, 0.5, 0.1)
 						event:getEntity():getWorld():playSound(event:getEntity():getLocation(), import("$.Sound").ITEM_CHORUS_FRUIT_TELEPORT, 0.5, 1.2)
-					end, 10)
+					end, 20)
 				else
 					ability:resetCooldown(id)
 				end

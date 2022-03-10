@@ -30,7 +30,7 @@ function useAbility(LAPlayer, event, ability, id)
 		if event:getItem() ~= nil then
 			if game.isAbilityItem(event:getItem(), "IRON_INGOT") then
 				if game.checkCooldown(LAPlayer, game.getPlayer(event:getPlayer()), ability, id) then
-					LAPlayer:setVariable("EX038-abilityTime", 200)
+					LAPlayer:setVariable("EX038-abilityTime", 100)
 				end
 			end
 		end
@@ -92,11 +92,13 @@ function cancelDamage(LAPlayer, event, ability, id)
 end
 
 function cancelAttack(LAPlayer, event, ability, id)
-	if event:getEntity():getType():toString() == "PLAYER" and event:getDamager():getType():toString() == "PLAYER" then
+	if event:getEntity():getType():toString() == "PLAYER" then
 		if game.getPlayer(event:getDamager()) ~= nil and game.getPlayer(event:getDamager()):getVariable("EX038-gameMode") ~= nil then
 			event:setCancelled(true)
 		end
-		
+	end
+	
+	if event:getDamager():getType():toString() == "PLAYER" then
 		if game.getPlayer(event:getEntity()) ~= nil and game.getPlayer(event:getEntity()):getVariable("EX038-gameMode") ~= nil then
 			event:setCancelled(true)
 		end

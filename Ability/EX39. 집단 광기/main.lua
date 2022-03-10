@@ -24,7 +24,7 @@ function useAbility(LAPlayer, event, ability, id)
 				if game.checkCooldown(LAPlayer, game.getPlayer(event:getPlayer()), ability, id) then
 					LAPlayer:setVariable("EX039-abilityTime", 100)
 				end
-			end
+			end 
 		end
 	end
 end
