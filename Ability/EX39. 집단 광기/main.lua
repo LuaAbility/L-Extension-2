@@ -11,7 +11,7 @@ function onTimer(player, ability)
 	local count = player:getVariable("EX039-abilityTime")
 	if count > 0 then 
 		if count % 10 == 0 then randomDir(player) end
-		count = count - 2 
+		count = count - 1 
 		if count <= 0 then game.sendMessage(player:getPlayer(), "§2[§a집단 광기§2] §a능력 시전 시간이 종료되었습니다. (집단 광기)") end
 	end
 	player:setVariable("EX039-abilityTime", count)

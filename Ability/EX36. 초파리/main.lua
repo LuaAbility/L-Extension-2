@@ -37,7 +37,7 @@ function giveFirework(LAPlayer, event, ability, id)
 					event:getPlayer():getInventory():removeItem(itemStack)
 					
 					local addItemStack = newInstance("$.inventory.ItemStack", {material.FIREWORK_ROCKET, 1})
-					event:getPlayer():getWorld():dropItemNaturally(event:getPlayer():getLocation(), addItemStack)
+					event:getPlayer():getInventory():addItem( { addItemStack } )
 				end
 			end
 		end

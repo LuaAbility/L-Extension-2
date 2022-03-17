@@ -10,7 +10,7 @@ function onTimer(player, ability)
 	
 	local count = player:getVariable("EX023-passiveCount")
 	if count > 0 then
-		count = count - 2
+		count = count - 1
 		
 		if count == 0 then
             game.sendMessage(player:getPlayer(), "§1[§b바벨탑§1] §b재사용 대기시간이 종료되었습니다.")

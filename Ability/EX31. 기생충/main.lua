@@ -17,7 +17,7 @@ function onTimer(player, ability)
 	if count > 0 then 
 		teleport(player)
 		if count % 40 == 0 then takeHealth(player) end
-		count = count - 2 
+		count = count - 1 
 		if count <= 0 then stopHiding(player) end
 	end
 	player:setVariable("EX031-isInvisible", count)

@@ -16,7 +16,7 @@ function onTimer(player, ability)
 	if player:getVariable("EX038-abilityTime") == nil then player:setVariable("EX038-abilityTime", 0) end
 	local count = player:getVariable("EX038-abilityTime")
 	if count > 0 then 
-		count = count - 2 
+		count = count - 1 
 		if count <= 0 then endOfAbility(player)
 		else cancelData(player) end
 	end
@@ -92,13 +92,13 @@ function cancelDamage(LAPlayer, event, ability, id)
 end
 
 function cancelAttack(LAPlayer, event, ability, id)
-	if event:getEntity():getType():toString() == "PLAYER" then
+	if event:getEntity():getType():toString() == "PLAYER" and event:getDamager():getType():toString() == "PLAYER" then
 		if game.getPlayer(event:getDamager()) ~= nil and game.getPlayer(event:getDamager()):getVariable("EX038-gameMode") ~= nil then
 			event:setCancelled(true)
 		end
 	end
 	
-	if event:getDamager():getType():toString() == "PLAYER" then
+	if event:getDamager():getType():toString() == "PLAYER" and event:getEntity():getType():toString() == "PLAYER" then
 		if game.getPlayer(event:getEntity()) ~= nil and game.getPlayer(event:getEntity()):getVariable("EX038-gameMode") ~= nil then
 			event:setCancelled(true)
 		end

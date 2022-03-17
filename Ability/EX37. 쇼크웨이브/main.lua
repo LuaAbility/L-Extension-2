@@ -1,5 +1,5 @@
 function Init(abilityData)
-	plugin.registerEvent(abilityData, "충격파 발사", "PlayerInteractEvent", 1800)
+	plugin.registerEvent(abilityData, "충격파 발사", "PlayerInteractEvent", 1200)
 end
 
 function onEvent(funcTable)

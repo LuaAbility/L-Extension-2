@@ -14,7 +14,7 @@ function onTimer(player, ability)
 	if player:getVariable("EX021-counterTime") == nil then player:setVariable("EX021-counterTime", 0) end
 	local count = player:getVariable("EX021-counterTime")
 	if count > 0 then 
-		count = count - 2 
+		count = count - 1 
 		game.sendActionBarMessage(player:getPlayer(), "§a카운터 모드")
 		if count <= 0 then game.sendActionBarMessage(player:getPlayer(), "§c카운터 모드 종료!") end
 	end

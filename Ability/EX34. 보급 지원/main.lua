@@ -23,7 +23,7 @@ function onTimer(player, ability)
 		count = 0
 		giveChest(player:getPlayer())
 	end
-	count = count + 2
+	count = count + 1
 	player:setVariable("EX034-passiveCount", count)
 end
 
@@ -33,7 +33,7 @@ function giveKey(player)
 	itemMeta:setDisplayName(game.getPlayer(player):getVariable("EX034-chestKey"))
 	itemStack:setItemMeta(itemMeta)
 	
-	player:getWorld():dropItemNaturally(player:getLocation(), itemStack)
+	player:getInventory():addItem( { itemStack } )
 end
 
 function giveChest(player)
