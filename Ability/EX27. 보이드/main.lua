@@ -14,7 +14,7 @@ function toVoid(LAPlayer, event, ability, id)
 				if game.targetPlayer(LAPlayer, game.getPlayer(event:getEntity())) then
 					local beforeLoc = event:getEntity():getLocation()
 					local afterLoc = beforeLoc:clone()
-					afterLoc:setY(-256)
+					afterLoc:setY(-128)
 					
 					game.sendMessage(event:getEntity(), "§7공허로 이동합니다.")
 					event:getEntity():getWorld():spawnParticle(import("$.Particle").SMOKE_NORMAL, event:getEntity():getLocation():add(0,1,0), 200, 0.5, 1, 0.5, 0.1)

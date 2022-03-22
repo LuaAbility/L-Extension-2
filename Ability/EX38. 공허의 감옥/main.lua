@@ -9,7 +9,7 @@ function onEvent(funcTable)
 	if funcTable[1] == "감옥 생성" then useAbility(funcTable[3], funcTable[2], funcTable[4], funcTable[1]) end
 	if funcTable[1] == "EX038-cancelDamage" and funcTable[2]:getEventName() == "EntityDamageEvent" then cancelDamage(funcTable[3], funcTable[2], funcTable[4], funcTable[1]) end
 	if funcTable[1] == "EX038-cancelAttack" and funcTable[2]:getEventName() == "EntityDamageByEntityEvent" then cancelAttack(funcTable[3], funcTable[2], funcTable[4], funcTable[1]) end
-	if funcTable[1] == "EX038-stopMove" then stopMove(funcTable[3], funcTable[2], funcTable[4], funcTable[1]) end
+	--if funcTable[1] == "EX038-stopMove" then stopMove(funcTable[3], funcTable[2], funcTable[4], funcTable[1]) end
 end
 
 function onTimer(player, ability)
@@ -57,7 +57,7 @@ function cancelData(player)
 	local players = util.getTableFromList(game.getPlayers())
 	for i = 1, #players do
 		if player:getPlayer():getWorld():getEnvironment() == players[i]:getPlayer():getWorld():getEnvironment() and
-		players[i]:getPlayer():getLocation():distance(player:getPlayer():getLocation()) <= 7.5 and game.targetPlayer(player, players[i], false) then 
+		players[i]:getPlayer():getLocation():distance(player:getPlayer():getLocation()) <= 7.5 and game.targetPlayer(player, players[i], false, true) then 
 			if player:getPlayer() ~= players[i]:getPlayer() then
 				if players[i]:getVariable("EX038-abilityLock") == nil then 
 					if players[i]:getVariable("abilityLock") == nil then players[i]:setVariable("EX038-abilityLock", false) 

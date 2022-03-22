@@ -15,7 +15,7 @@ function fishing(LAPlayer, event, ability, id)
 			local targetPlayer = players[util.random(1, #players)]
 			while targetPlayer:getPlayer():getName() == event:getPlayer():getName() do targetPlayer = players[util.random(1, #players)] end
 			
-			if game.targetPlayer(LAPlayer, targetPlayer) then
+			if game.targetPlayer(LAPlayer, targetPlayer, true) then
 				targetPlayer:getPlayer():teleport(event:getHook():getLocation())
 				local velocity = event:getPlayer():getLocation():toVector():subtract(targetPlayer:getPlayer():getLocation():toVector()):multiply(0.175)
 				targetPlayer:getPlayer():setVelocity(velocity)

@@ -43,7 +43,7 @@ function babel(player)
 	player:setVariable("EX023-maxY", 100)
 	player:setVariable("EX023-passiveCount", 6000)
 	
-	local players = util.getTableFromList(game.getPlayers())
+	local players = util.getTableFromList(game.getTeamManager():getOpponentTeam(player, false))
 	for i = 1, #players do
 		if players[i]:getPlayer():getName() ~= player:getPlayer():getName() and game.targetPlayer(player, players[i]) then
 			players[i]:getPlayer():setHealth(0)

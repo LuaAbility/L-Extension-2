@@ -26,7 +26,7 @@ function sand(LAPlayer, event, ability, id)
 					summonSand(event:getPlayer():getLocation()) 
 				end
 			elseif event:getAction():toString() == "LEFT_CLICK_AIR" or event:getAction():toString() == "LEFT_CLICK_BLOCK" then
-				local players = util.getTableFromList(game.getPlayers())
+				local players = util.getTableFromList(game.getTeamManager():getOpponentTeam(LAPlayer, false))
 				for i = 1, #players do
 					if getLookingAt(event:getPlayer(), players[i]:getPlayer(), 0.98) then
 						if game.checkCooldown(LAPlayer, game.getPlayer(event:getPlayer()), ability, id) then 

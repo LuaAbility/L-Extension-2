@@ -30,7 +30,7 @@ function useAbility(LAPlayer, event, ability, id)
 end
 
 function randomDir(player)
-	local players = util.getTableFromList(game.getPlayers())
+	local players = util.getTableFromList(game.getTeamManager():getOpponentTeam(player, false))
 	for i = 1, #players do
 		if game.targetPlayer(player, players[i], false) then
 			local loc = players[i]:getPlayer():getLocation()

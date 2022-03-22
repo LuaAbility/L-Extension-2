@@ -1,7 +1,7 @@
 local material = import("$.Material")
 
 function Init(abilityData)
-	plugin.registerEvent(abilityData, "감옥 생성", "PlayerInteractEvent", 2000)
+	plugin.registerEvent(abilityData, "감옥 생성", "PlayerInteractEvent", 1600)
 end
 
 function onEvent(funcTable)
@@ -12,7 +12,7 @@ function seeCheck(LAPlayer, event, ability, id)
 	if event:getAction():toString() == "RIGHT_CLICK_AIR" or event:getAction():toString() == "RIGHT_CLICK_BLOCK" then
 		if event:getItem() ~= nil then
 			if game.isAbilityItem(event:getItem(), "IRON_INGOT") then
-				local players = util.getTableFromList(game.getPlayers())
+				local players = util.getTableFromList(game.getTeamManager():getOpponentTeam(LAPlayer, false))
 				for i = 1, #players do
 					if getLookingAt(event:getPlayer(), players[i]:getPlayer(), 0.98) then
 						if game.checkCooldown(LAPlayer, game.getPlayer(event:getPlayer()), ability, id) then 
