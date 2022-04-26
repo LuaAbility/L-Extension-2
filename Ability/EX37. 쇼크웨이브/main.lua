@@ -27,7 +27,7 @@ function shockwave(player)
 		util.runLater(function()
 			local defaultLoc = newInstance("$.Location", {player:getWorld(), firstLoc:getX() + (dir:getX() * i), firstLoc:getY() + (dir:getY() * i), firstLoc:getZ() + (dir:getZ() * i)})
 			
-			player:getWorld():createExplosion(defaultLoc, 2)
+			player:getWorld():createExplosion(defaultLoc, 2.5)
 			player:getWorld():spawnParticle(import("$.Particle").EXPLOSION_HUGE, defaultLoc, 1, 0.5, 0.5, 0.5, 0.05)
 		end, (i - 5))
 	end

@@ -15,10 +15,14 @@ function onTimer(player, ability)
 	local count = player:getVariable("EX021-counterTime")
 	if count > 0 then 
 		count = count - 1 
-		game.sendActionBarMessage(player:getPlayer(), "§a카운터 모드")
-		if count <= 0 then game.sendActionBarMessage(player:getPlayer(), "§c카운터 모드 종료!") end
+		game.sendActionBarMessage(player:getPlayer(), "EX003", "§a카운터 모드")
+		if count <= 0 then game.sendActionBarMessage(player:getPlayer(), "EX003", "") end
 	end
 	player:setVariable("EX021-counterTime", count)
+end
+
+function Reset(player, ability)
+	game.sendActionBarMessageToAll("EX003", "")
 end
 
 function startCounter(LAPlayer, event, ability, id)
@@ -34,7 +38,6 @@ function checkCounterMode(LAPlayer, event, ability, id)
 		if LAPlayer:getVariable("EX021-counterTime") > 0 then
 			if game.checkCooldown(LAPlayer, game.getPlayer(event:getEntity()), ability, id) then
 				LAPlayer:setVariable("EX021-counterTime", -10)
-				game.sendActionBarMessage(event:getEntity(), "§c카운터 모드 종료!")
 				event:getEntity():getWorld():spawnParticle(import("$.Particle").SMOKE_NORMAL, event:getEntity():getLocation():add(0,1,0), 500, 0.5, 1, 0.5, 0.9)
 				event:getEntity():getWorld():playSound(event:getEntity():getLocation(), import("$.Sound").ENTITY_WITHER_SHOOT, 0.2, 1)
 				event:getDamager():damage(event:getDamage(), event:getEntity())

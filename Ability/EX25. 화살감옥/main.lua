@@ -14,7 +14,7 @@ function seeCheck(LAPlayer, event, ability, id)
 			if game.isAbilityItem(event:getItem(), "IRON_INGOT") then
 				local players = util.getTableFromList(game.getTeamManager():getOpponentTeam(LAPlayer, false))
 				for i = 1, #players do
-					if getLookingAt(event:getPlayer(), players[i]:getPlayer(), 0.98) then
+					if getLookingAt(event:getPlayer(), players[i]:getPlayer(), 0.95) then
 						if game.checkCooldown(LAPlayer, game.getPlayer(event:getPlayer()), ability, id) then 
 							if game.targetPlayer(LAPlayer, players[i]) then
 								players[i]:getPlayer():getWorld():spawnParticle(import("$.Particle").SMOKE_NORMAL, players[i]:getPlayer():getLocation():add(0,1,0), 200, 0.5, 1, 0.5, 0.1)

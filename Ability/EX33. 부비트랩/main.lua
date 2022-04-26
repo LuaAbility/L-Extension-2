@@ -14,12 +14,15 @@ function onTimer(player, ability)
 	end
 	
 	local loc = player:getVariable("EX033-trapLoc")
-	game.sendActionBarMessage(player:getPlayer(), "§a설치된 트랩 수 §6: §b" .. #loc .. "개")
+	game.sendActionBarMessage(player:getPlayer(), "EX033", "§a설치된 트랩 수 §6: §b" .. #loc .. "개")
 	for i = 1, #loc do
 		player:getPlayer():spawnParticle(import("$.Particle").SMOKE_NORMAL, loc[i], 10, 0.1, 0.2, 0.1, 0.01)
 	end
 end
 
+function Reset(player, ability)
+	game.sendActionBarMessageToAll("EX033", "")
+end
 
 function addTrap(LAPlayer, event, ability, id)
 	if event:getAction():toString() == "LEFT_CLICK_BLOCK" then

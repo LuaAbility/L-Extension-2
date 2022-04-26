@@ -12,7 +12,7 @@ end
 
 function removeDamage(LAPlayer, event, ability, id)
 	if event:getCause():toString() == "SUFFOCATION" and event:getEntity():getType():toString() == "PLAYER" then
-		if game.checkCooldown(LAPlayer, game.getPlayer(event:getEntity()), ability, id) then
+		if game.checkCooldown(LAPlayer, game.getPlayer(event:getEntity()), ability, id) and event:getEntity():getWorld():getWorldBorder():isInside(event:getEntity():getLocation()) then
 			event:setCancelled(true)
 		end
 	end
@@ -28,7 +28,7 @@ function sand(LAPlayer, event, ability, id)
 			elseif event:getAction():toString() == "LEFT_CLICK_AIR" or event:getAction():toString() == "LEFT_CLICK_BLOCK" then
 				local players = util.getTableFromList(game.getTeamManager():getOpponentTeam(LAPlayer, false))
 				for i = 1, #players do
-					if getLookingAt(event:getPlayer(), players[i]:getPlayer(), 0.98) then
+					if getLookingAt(event:getPlayer(), players[i]:getPlayer(), 0.95) then
 						if game.checkCooldown(LAPlayer, game.getPlayer(event:getPlayer()), ability, id) then 
 							if game.targetPlayer(LAPlayer, players[i]) then
 								summonSand(players[i]:getPlayer():getLocation()) 
