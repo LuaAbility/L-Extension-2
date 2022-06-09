@@ -42,7 +42,7 @@ function giveChest(player)
 		loc:setY(loc:getWorld():getHighestBlockAt(loc:getX(), loc:getZ()):getLocation():getY() + 1)
 		
 		local chest = loc:getWorld():getBlockAt(loc)
-		chest:setType(material.CHEST)
+		util.setBlockType(chest, material.CHEST)
 		
 		local chestData = chest:getState()
 		chestData:setLock(game.getPlayer(player):getVariable("EX034-chestKey"))
